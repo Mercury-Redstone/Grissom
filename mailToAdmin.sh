@@ -1,1 +1,1 @@
-$1 | mail -s "Grissom alert" msundh
+$1 | mail -s "Grissom alert" trugun
