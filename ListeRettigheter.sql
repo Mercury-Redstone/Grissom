@@ -1,0 +1,9 @@
+CREATE TABLE ListeRettigheter(
+    liste_id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, 
+    les TINYINT NOT NULL DEFAULT 0,
+    skriv TINYINT NOT NULL DEFAULT 0, 
+    utfor TINYINT NOT NULL DEFAULT 0,
+
+    PRIMARY KEY(liste_id) 
+);
+
