@@ -1,9 +1,15 @@
 CC=gcc
-CFLAGS=-c `mysql_config --cflags`
+CFLAGS=`mysql_config --cflags`
 LDFLAGS=`mysql_config --libs`
-SOURCES=main.c
+SOURCES=$(wildcard *.c)
 OBJECTS=$(SOURCES:.c=.o)
+EXECUTABLES=$(SOURCES:.c=)
 
-all: main add-users add-groups add-rights add-files calculate-hashes
-.c.o: 
-	gcc -c $(CFLAGS) $< -l $(LDFLAGS) -l $@
+.PHONY: all
+
+all: $(EXECUTABLES)
+.c.o: sql.h
+	$(CC) $(CFLAGS) $< -l $(LDFLAGS) -l $@
+.PHONY: clean
+clean:
+	rm -f $(OBJECTS) $(EXECUTABLES)
