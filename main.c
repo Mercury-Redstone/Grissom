@@ -3,9 +3,8 @@
 
 int main(int argc, char **argv)
 {
-	printf("hello world\n");
-	printf("TODAY IS ANOTHER DAY"); 
-
+	printf("sql_init\t");
 	sql_init();
+	printf("Ok\n");
 	return 0;
 }
