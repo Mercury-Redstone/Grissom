@@ -16,6 +16,9 @@ void sql_init() {
 	assert(mysql==NULL);
 	mysql=mysql_init(NULL);
 	assert(mysql!=NULL);
+
+	mysql=mysql_real_connect(mysql, SQL_HOST, SQL_USER, SQL_PASS, SQL_DB, 0, NULL, 0);
+	assert(mysql!=NULL);
 }
 
 #endif
