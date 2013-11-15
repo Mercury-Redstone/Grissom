@@ -6,9 +6,9 @@ CREATE TABLE Medlemskap(
 
     FOREIGN KEY(bruker_id)
         REFERENCES Bruker(bruker_id) 
-        ON DELETE CASCADE 
+        ON DELETE CASCADE,
     FOREIGN KEY(gruppe_id) 
-        REFREENCES Gruppe(gruppe_id) 
+        REFERENCES Gruppe(gruppe_id) 
         ON DELETE CASCADE
     );
  
