@@ -10,8 +10,12 @@
 #include <mysql/my_global.h>
 #include <mysql/my_sys.h>
 
+MYSQL* mysql=NULL;
+
 void sql_init() {
-	my_init();
+	assert(mysql==NULL);
+	mysql=mysql_init(NULL);
+	assert(mysql!=NULL);
 }
 
 #endif
