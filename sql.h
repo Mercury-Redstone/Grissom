@@ -20,5 +20,15 @@ void sql_init() {
 	mysql=mysql_real_connect(mysql, SQL_HOST, SQL_USER, SQL_PASS, SQL_DB, 0, NULL, 0);
 	assert(mysql!=NULL);
 }
+MYSQL_RES* sql_query(const char* query) {
+	assert(mysql_query(mysql,query)==0);
+	MYSQL_RES* result = mysql_store_result(mysql);
+	return result;
+}
+void sql_free_result(MYSQL_RES* result) {
+	assert(result!=NULL);
+	mysql_free_result(result);
+}
+
 
 #endif
