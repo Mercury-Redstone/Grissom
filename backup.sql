@@ -46,6 +46,33 @@ LOCK TABLES `Bruker` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `Endring`
+--
+
+DROP TABLE IF EXISTS `Endring`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Endring` (
+  `e_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fil_id` varchar(50) NOT NULL,
+  `hash` varchar(128) NOT NULL,
+  `dato` datetime NOT NULL,
+  `generasjon` tinyint(3) unsigned NOT NULL,
+  PRIMARY KEY (`e_id`),
+  KEY `fil_id` (`fil_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Endring`
+--
+
+LOCK TABLES `Endring` WRITE;
+/*!40000 ALTER TABLE `Endring` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Endring` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `Fil`
 --
 
@@ -209,4 +236,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-15 18:34:17
+-- Dump completed on 2013-11-15 18:59:34
