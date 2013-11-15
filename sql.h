@@ -12,23 +12,34 @@
 
 MYSQL* mysql=NULL;
 
+void sql_failOnError() {
+        if(mysql_errno(mysql)!=0)
+        {
+                fprintf(stderr, "%s", mysql_error(mysql));
+                exit(1);
+        }
+}
+
 void sql_init() {
 	assert(mysql==NULL);
 	mysql=mysql_init(NULL);
+	sql_failOnError();
 	assert(mysql!=NULL);
 
 	mysql=mysql_real_connect(mysql, SQL_HOST, SQL_USER, SQL_PASS, SQL_DB, 0, NULL, 0);
+        sql_failOnError();
 	assert(mysql!=NULL);
 }
 MYSQL_RES* sql_query(const char* query) {
-	assert(mysql_query(mysql,query)==0);
+	mysql_query(mysql,query);
+        sql_failOnError();
 	MYSQL_RES* result = mysql_store_result(mysql);
+        sql_failOnError();
 	return result;
 }
 void sql_free_result(MYSQL_RES* result) {
-	assert(result!=NULL);
+	if(result==NULL)return;
 	mysql_free_result(result);
 }
-
 
 #endif
