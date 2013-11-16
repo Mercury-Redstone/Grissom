@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=`mysql_config --cflags`
+CFLAGS=-g `mysql_config --cflags`
 LDFLAGS=`mysql_config --libs`
 SOURCES=$(wildcard *.c)
 OBJECTS=$(SOURCES:.c=.o)
