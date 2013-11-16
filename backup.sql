@@ -24,16 +24,15 @@ DROP TABLE IF EXISTS `Bruker`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Bruker` (
   `bruker_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fNavn` varchar(30) NOT NULL,
-  `eNavn` varchar(50) NOT NULL,
+  `navn` varchar(90) NOT NULL,
   `epost` varchar(50) NOT NULL,
-  `tlf` int(8) NOT NULL,
+  `tlf` int(8) unsigned zerofill NOT NULL,
   `adresse` varchar(50) NOT NULL,
   `byen` varchar(50) NOT NULL,
-  `postkode` int(4) NOT NULL,
+  `postkode` int(4) unsigned zerofill NOT NULL,
   `gender` enum('M','F') NOT NULL DEFAULT 'M',
   PRIMARY KEY (`bruker_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,6 +41,7 @@ CREATE TABLE `Bruker` (
 
 LOCK TABLES `Bruker` WRITE;
 /*!40000 ALTER TABLE `Bruker` DISABLE KEYS */;
+INSERT INTO `Bruker` VALUES (1,'Administrator','root@localhost',00000000,'SYSTEM','SYSTEM',0000,'M'),(2,'Nobody','nobody@localhost',00000000,'SYSTEM','SYSTEM',0000,'M');
 /*!40000 ALTER TABLE `Bruker` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,4 +236,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-15 18:59:34
+-- Dump completed on 2013-11-16  1:57:41
