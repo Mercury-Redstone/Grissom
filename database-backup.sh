@@ -1,2 +1,2 @@
-mysqldump -u johdah -p johdah > backup.sql
+mysqldump -u johdah -p johdah > backup.sql-backup
 
