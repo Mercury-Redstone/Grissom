@@ -19,9 +19,10 @@
 
 
 #Custom
-add-files
-add-groups
-add-rights
-add-users
-calculate-hashes
 tester
+add-user
+add-group
+add-file
+add-right
+import-users
+import-groups
