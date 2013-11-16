@@ -1,1 +1,1 @@
-mysql -u johdah -p # 1234
+mysql -u johdah -p johdah # 1234
