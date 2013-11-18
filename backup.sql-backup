@@ -1,0 +1,240 @@
+-- MySQL dump 10.13  Distrib 5.1.72, for debian-linux-gnu (i486)
+--
+-- Host: localhost    Database: johdah
+-- ------------------------------------------------------
+-- Server version	5.1.72-2
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Bruker`
+--
+
+DROP TABLE IF EXISTS `Bruker`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Bruker` (
+  `bruker_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `navn` varchar(90) NOT NULL,
+  `epost` varchar(50) NOT NULL,
+  `tlf` int(8) unsigned zerofill NOT NULL,
+  `adresse` varchar(50) NOT NULL,
+  `byen` varchar(50) NOT NULL,
+  `postkode` int(4) unsigned zerofill NOT NULL,
+  `gender` enum('M','F') NOT NULL DEFAULT 'M',
+  PRIMARY KEY (`bruker_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Bruker`
+--
+
+LOCK TABLES `Bruker` WRITE;
+/*!40000 ALTER TABLE `Bruker` DISABLE KEYS */;
+INSERT INTO `Bruker` VALUES (1,'Administrator','msundh@localhost',00000000,'SYSTEM','SYSTEM',0000,'M'),(2,'Nobody','msundh@localhost',00000000,'SYSTEM','SYSTEM',0000,'M');
+/*!40000 ALTER TABLE `Bruker` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Endring`
+--
+
+DROP TABLE IF EXISTS `Endring`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Endring` (
+  `e_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `fil_id` varchar(50) NOT NULL,
+  `hash` varchar(128) NOT NULL,
+  `dato` datetime NOT NULL,
+  `generasjon` tinyint(3) unsigned NOT NULL,
+  PRIMARY KEY (`e_id`),
+  KEY `fil_id` (`fil_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Endring`
+--
+
+LOCK TABLES `Endring` WRITE;
+/*!40000 ALTER TABLE `Endring` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Endring` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Fil`
+--
+
+DROP TABLE IF EXISTS `Fil`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Fil` (
+  `fil_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `filNavn` varchar(30) NOT NULL,
+  `bruker_id` int(11) NOT NULL DEFAULT '0',
+  `gruppe_id` int(11) NOT NULL DEFAULT '0',
+  `katalog_id` int(11) NOT NULL,
+  `eier` int(11) NOT NULL DEFAULT '1',
+  `skal_overvake` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`fil_id`),
+  KEY `bruker_id` (`bruker_id`),
+  KEY `gruppe_id` (`gruppe_id`),
+  KEY `katalog_id` (`katalog_id`),
+  KEY `eier` (`eier`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Fil`
+--
+
+LOCK TABLES `Fil` WRITE;
+/*!40000 ALTER TABLE `Fil` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Fil` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Gruppe`
+--
+
+DROP TABLE IF EXISTS `Gruppe`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Gruppe` (
+  `gruppe_id` int(10) NOT NULL AUTO_INCREMENT,
+  `gruppe_Navn` varchar(50) NOT NULL,
+  PRIMARY KEY (`gruppe_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Gruppe`
+--
+
+LOCK TABLES `Gruppe` WRITE;
+/*!40000 ALTER TABLE `Gruppe` DISABLE KEYS */;
+INSERT INTO `Gruppe` VALUES (1,'SYSTEM');
+/*!40000 ALTER TABLE `Gruppe` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Katalog`
+--
+
+DROP TABLE IF EXISTS `Katalog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Katalog` (
+  `katalog_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `navn` varchar(50) NOT NULL,
+  PRIMARY KEY (`katalog_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Katalog`
+--
+
+LOCK TABLES `Katalog` WRITE;
+/*!40000 ALTER TABLE `Katalog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Katalog` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ListeRettigheter`
+--
+
+DROP TABLE IF EXISTS `ListeRettigheter`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ListeRettigheter` (
+  `liste_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `les` tinyint(4) NOT NULL DEFAULT '0',
+  `skriv` tinyint(4) NOT NULL DEFAULT '0',
+  `utfor` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`liste_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ListeRettigheter`
+--
+
+LOCK TABLES `ListeRettigheter` WRITE;
+/*!40000 ALTER TABLE `ListeRettigheter` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ListeRettigheter` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Medlemskap`
+--
+
+DROP TABLE IF EXISTS `Medlemskap`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Medlemskap` (
+  `medlemskap_id` int(10) unsigned NOT NULL,
+  `bruker_id` int(11) NOT NULL,
+  `gruppe_id` int(11) NOT NULL,
+  PRIMARY KEY (`medlemskap_id`),
+  KEY `bruker_id` (`bruker_id`),
+  KEY `gruppe_id` (`gruppe_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Medlemskap`
+--
+
+LOCK TABLES `Medlemskap` WRITE;
+/*!40000 ALTER TABLE `Medlemskap` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Medlemskap` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `Rettighet`
+--
+
+DROP TABLE IF EXISTS `Rettighet`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Rettighet` (
+  `rettighet_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `rettigheter` varchar(10) NOT NULL,
+  `fil` int(11) NOT NULL,
+  PRIMARY KEY (`rettighet_id`),
+  KEY `rettigheter` (`rettigheter`),
+  KEY `fil` (`fil`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `Rettighet`
+--
+
+LOCK TABLES `Rettighet` WRITE;
+/*!40000 ALTER TABLE `Rettighet` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Rettighet` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2013-11-18 17:04:13
