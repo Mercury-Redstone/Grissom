@@ -1,5 +1,5 @@
 #ifndef sql_h
-#define sql_h 1
+#define sql_h
 
 #define SQL_HOST "localhost"
 #define SQL_DB   "johdah"
