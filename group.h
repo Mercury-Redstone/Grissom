@@ -8,6 +8,7 @@
 #define SQL_INSERT_GROUP_FORMAT	"INSERT INTO Gruppe (gruppe_Navn) VALUES ('%s');"
 
 void add_group(char* navn) {
+	if(mysql==NULL) sql_init();
 	char* buf=malloc(strlen(SQL_INSERT_GROUP_BASE)+strlen(navn)+1);
 	sprintf(buf, SQL_INSERT_GROUP_FORMAT, navn);
 	sql_query(buf);
