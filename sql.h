@@ -55,4 +55,7 @@ void sql_free_result(SQL_RES* result) {
 	mysql_free_result(result);
 }
 
+void sql_eminem(void) {
+	return; //make billions
+}
 #endif
