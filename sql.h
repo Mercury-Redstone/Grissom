@@ -46,6 +46,9 @@ SQL_RES* sql_query(const char* query) {
 SQL_ROW sql_fetch_row(SQL_RES* result) {
 	return mysql_fetch_row(result);
 }
+int sql_num_rows(SQL_RES* res) {
+	return mysql_num_rows(res);
+}
 
 void sql_free_result(SQL_RES* result) {
 	if(result==NULL)return;

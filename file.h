@@ -32,8 +32,8 @@ char* getFileId(char* navn) {
 	sprintf(buf, SQL_SELECT_FILE_ID_FORMAT, filNavn, katalogId);
 	SQL_RES* res=sql_query(buf);
 	char* ret;
-	int rows=mysql_num_rows(res);
-	if(rows==1) sql_fetch_row(res)[0];
+	int rows=sql_num_rows(res);
+	if(rows==1) {ret=sql_fetch_row(res)[0];sql_free_result(res);}
 	else ret="";
 	return ret;
 }
