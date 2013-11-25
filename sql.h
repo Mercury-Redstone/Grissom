@@ -31,6 +31,7 @@ void sql_init() {
 	assert(mysql!=NULL);
 }
 MYSQL_RES* sql_query(const char* query) {
+	if(mysql==NULL) sql_init();
 	mysql_query(mysql,query);
         sql_failOnError();
 	MYSQL_RES* result = mysql_store_result(mysql);
