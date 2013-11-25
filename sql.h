@@ -6,6 +6,9 @@
 #define SQL_USER "johdah"
 #define SQL_PASS "1234"
 
+#define SQL_RES MYSQL_RES
+#define SQL_ROW MYSQL_ROW
+
 #include <mysql/mysql.h> // Ref: http://dev.mysql.com/doc/refman/5.0/en/c-api.html
 #include <mysql/my_global.h>
 #include <mysql/my_sys.h>
@@ -31,7 +34,7 @@ void sql_init() {
         sql_failOnError();
 	assert(mysql!=NULL);
 }
-MYSQL_RES* sql_query(const char* query) {
+SQL_RES* sql_query(const char* query) {
 	printf("SQL: %s\n", query);
 	if(mysql==NULL) sql_init();
 	mysql_query(mysql,query);
@@ -40,7 +43,11 @@ MYSQL_RES* sql_query(const char* query) {
         sql_failOnError();
 	return result;
 }
-void sql_free_result(MYSQL_RES* result) {
+SQL_ROW sql_fetch_row(SQL_RES* result) {
+	return mysql_fetch_row(result);
+}
+
+void sql_free_result(SQL_RES* result) {
 	if(result==NULL)return;
 	mysql_free_result(result);
 }
