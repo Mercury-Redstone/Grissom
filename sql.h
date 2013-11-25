@@ -15,7 +15,8 @@ MYSQL* mysql=NULL;
 void sql_failOnError() {
         if(mysql_errno(mysql)!=0)
         {
-                fprintf(stderr, "%s", mysql_error(mysql));
+                fprintf(stderr, "%s\n\n", mysql_error(mysql));
+		assert(1==2);
                 exit(1);
         }
 }
@@ -31,6 +32,7 @@ void sql_init() {
 	assert(mysql!=NULL);
 }
 MYSQL_RES* sql_query(const char* query) {
+	printf("SQL: %s\n", query);
 	if(mysql==NULL) sql_init();
 	mysql_query(mysql,query);
         sql_failOnError();
