@@ -28,3 +28,4 @@ import-users
 import-groups
 add-catalog
 add-revision
+sha512sum
