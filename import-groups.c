@@ -11,13 +11,14 @@ int main() {
 	ssize_t read;
 	while((read=getline(&line,&len,fp))!=-1) {
 //		printf("%s", line);
-		char* name,*password,*id,*users;
+		char* name,*password,*id,*users,*member;
 //		sscanf(line, "%s:%s:%d:%d:%s:%s",uname,pw,uid,gid,name,home,shell);
 		name=strsep(&line,":");
 		password=strsep(&line,":");
 		id=strsep(&line,":");
 		users=strsep(&line,":");
 		printf("%s\n",name);
+//		while((member
 //		add_user(char* navn, char* epost, char* tlf, char* adresse, char* byen, char* postkode, char gender)
 		add_group(name);
 	}

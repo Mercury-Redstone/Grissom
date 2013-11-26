@@ -2,6 +2,11 @@
 #define gruppe_h
 
 #include "sql.h"
+
+char* getGid(char*);
+
+#include "membership.h"
+
 #include <string.h>
 
 #define SQL_INSERT_GROUP_BASE	"INSERT INTO Gruppe (gruppe_Navn) VALUES ('');"
@@ -15,4 +20,6 @@ void add_group(char* navn) {
 	free(buf);
 }
 
+char* getGid(char* navn) {
+}
 #endif

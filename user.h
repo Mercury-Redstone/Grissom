@@ -14,5 +14,7 @@ void add_user(char* navn, char* epost, char* tlf, char* adresse, char* byen, cha
 	sql_query(buf);
 	free(buf);
 }
+char* getUid(char* navn) {
+}
 
 #endif
