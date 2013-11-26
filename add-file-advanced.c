@@ -11,16 +11,14 @@ int main(void) {
 
 	for(;;) {
 		int i = 0;
-		while (i) {
+		while (i<6) {
 			printf("%s", Nameholder[i]);
 			gets(temp);
-			inp[i] = malloc(strlen(temp));
-			inp[i] = temp;
+			inp[i] = strdup(temp);
 
-			if (i > 5)
-				break;
 			i++;
 		}
-		add_file(inp[0], getUid(inp[1]), getGid(inp[2]), getCatalogId(inp[3]), getUid(inp[4]), atoi(inp[5]));
+		char* filNavn=inp[0], *uid=getUid(inp[1]), *gid=getGid(inp[2]), *cid=getCatalogId(inp[3]), *euid=getUid(inp[4]);
+		add_file(filNavn,uid,gid,cid,euid,atoi(inp[5]));
 	}
 }
