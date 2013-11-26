@@ -7,8 +7,8 @@
 #define SQL_INSERT_USER_BASE	"INSERT INTO Bruker (navn, epost, tlf, adresse, byen, postkode, gender) VALUES ('','','','','','','');"
 #define SQL_INSERT_USER_FORMAT	"INSERT INTO Bruker (navn, epost, tlf, adresse, byen, postkode, gender) VALUES ('%s','%s','%s','%s','%s','%s','%c');"
 
-#define SQL_SELECT_USER_ID_BASE      "SELECT bruker_id FROM Katalog WHERE navn=''"
-#define SQL_SELECT_USER_ID_FORMAT    "SELECT bruker_id FROM Katalog WHERE navn='%s'"
+#define SQL_SELECT_USER_ID_BASE      "SELECT bruker_id FROM Bruker WHERE navn=''"
+#define SQL_SELECT_USER_ID_FORMAT    "SELECT bruker_id FROM Bruker WHERE navn='%s'"
 
 void add_user(char* navn, char* epost, char* tlf, char* adresse, char* byen, char* postkode, char gender) {
 	if(mysql==NULL) sql_init();
