@@ -1,4 +1,6 @@
 #include "file.h" 
+#include "user.h"
+#include "group.h"
 #include <stdio.h> 
 #include <string.h> 
 
@@ -19,6 +21,6 @@ int main(void) {
 				break;
 			i++;
 		}
-		add_file(inp[0], atoi(inp[1]), atoi(inp[2]), atoi(inp[3]), atoi(inp[4]), atoi(inp[5]));
+		add_file(inp[0], getUid(inp[1]), getGid(inp[2]), getCatalogId(inp[3]), getUid(inp[4]), atoi(inp[5]));
 	}
 }
