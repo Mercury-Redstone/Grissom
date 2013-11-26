@@ -23,7 +23,7 @@ char* getCatalogId(char* navn) {
 	SQL_ROW row=sql_fetch_row(res);
 	char* buf2=row[0];
 	sql_free_result(res);
-	return buf2;
+	return strdup(buf2);
 }
 
 #endif

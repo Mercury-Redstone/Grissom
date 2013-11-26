@@ -6,7 +6,7 @@
 #include <string.h>
 
 #define SQL_INSERT_FILE_BASE	"INSERT INTO Fil (filNavn, bruker_id, gruppe_id, katalog_id, eier, skal_overvake) VALUES ('','','','','','');"
-#define SQL_INSERT_FILE_FORMAT	"INSERT INTO Fil (filNavn, bruker_id, gruppe_id, katalog_id, eier, skal_overvake) VALUES ('%s','%d',%d,'%d','%d','%d');"
+#define SQL_INSERT_FILE_FORMAT	"INSERT INTO Fil (filNavn, bruker_id, gruppe_id, katalog_id, eier, skal_overvake) VALUES ('%s','%s','%s','%s','%s','%d');"
 
 #define SQL_SELECT_FILE_ID_BASE "SELECT fil_id FROM Fil WHERE filNavn='' AND katalog_id=''"
 #define SQL_SELECT_FILE_ID_FORMAT "SELECT fil_id FROM Fil WHERE filNavn='%s' AND katalog_id='%s'"
