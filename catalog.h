@@ -10,7 +10,7 @@
 #define SQL_SELECT_CATALOG_ID_BASE	"SELECT katalog_id FROM Katalog WHERE navn=''"
 #define SQL_SELECT_CATALOG_ID_FORMAT	"SELECT katalog_id FROM Katalog WHERE navn='%s'"
 void add_catalog(char* navn) {
-	if(mysql==NULL) sql_init();
+//	if(mysql==NULL) sql_init();
 	char* buf=malloc(strlen(SQL_INSERT_CATALOG_BASE)+strlen(navn)+1);
 	sprintf(buf, SQL_INSERT_CATALOG_FORMAT, navn);
 	sql_query(buf);

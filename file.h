@@ -11,7 +11,7 @@
 #define SQL_SELECT_FILE_ID_BASE "SELECT fil_id FROM Fil WHERE filNavn='' AND katalog_id=''"
 #define SQL_SELECT_FILE_ID_FORMAT "SELECT fil_id FROM Fil WHERE filNavn='%s' AND katalog_id='%s'"
 void add_file(char* navn, int bruker, int gruppe, int katalog, int eier, int skal_overvake) {
-	if(mysql==NULL) sql_init();
+//	if(mysql==NULL) sql_init();
 	char* buf=malloc(strlen(SQL_INSERT_FILE_BASE)+strlen(navn)+4*5*sizeof(int));
 	sprintf(buf, SQL_INSERT_FILE_FORMAT, navn, bruker, gruppe, katalog, eier, skal_overvake);
 	sql_query(buf);
