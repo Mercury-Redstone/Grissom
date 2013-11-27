@@ -28,5 +28,7 @@ import-users
 import-groups
 add-catalog
 add-revision
-sha512sum
 add-file-advanced
+
+app5
+app6
