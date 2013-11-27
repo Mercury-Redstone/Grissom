@@ -14,7 +14,7 @@ char* hash(char* fileName) {
 }
 
 char* prevHashFor(char* fileName) {
-	char* buf=malloc(strlen("SELECT hash FROM Endring WHERE fil_id=''"));
+	char* buf=malloc(strlen("SELECT hash FROM Endring WHERE fil_id='' ORDER BY generasjon DESC"));
 	char* fileId=getFileId(fileName);
 	if(strcmp(fileId,"")) {
 		sprintf(buf,"SELECT hash FROM Endring WHERE fil_id='%s'", fileId);
