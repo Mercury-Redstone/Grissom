@@ -7,7 +7,7 @@
 int main(void) {
 	char *inp[5];
 	char temp[100];
-	static const char *Nameholder[] = {"Navn på fil:", "Id til bruker:", "Id til gruppe", "Id til katalog:", "Id til eier:", "Skal filen overvåkes, 0 for ja"};
+	static const char *Nameholder[] = {"Navn på fil:", "Navn til bruker:", "Navn til gruppe:", "Navn til katalog:", "Navn til eier:", "Skal filen overvåkes 1 for ja:"};
 
 	for(;;) {
 		int i = 0;
