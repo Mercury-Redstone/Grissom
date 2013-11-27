@@ -23,12 +23,12 @@ char* prevHashFor(char* fileName) {
 		SQL_RES* res=sql_query(buf);
 		free(buf);
 		if(sql_num_rows(res)!=0)
-			buf=sql_fetch_row(res)[0];
+			return sql_fetch_row(res)[0];
 		sql_free_result(res);
 	}
 	return "";
 }
 
 int fileChanged(char* fileName) {
-	return strcmp(prevHashFor(fileName), hash(fileName))!=0;
+	return strcmp(prevHashFor(fileName), hash(fileName));
 }

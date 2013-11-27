@@ -17,7 +17,7 @@ char* getGid(char*);
 
 void add_group(char* navn) {
 	sql_queryf(strlen(SQL_INSERT_GROUP_BASE)+strlen(navn)+1, SQL_INSERT_GROUP_FORMAT, navn);
-	free(buf);
+//	free(buf);
 }
 
 char* getGid(char* navn) {

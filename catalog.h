@@ -14,7 +14,7 @@
 #define SQL_SELECT_CATALOG_NAME_FORMAT    "SELECT navn FROM Katalog WHERE katalog_id='%s'"
 void add_catalog(char* navn) {
 	sql_queryf(strlen(SQL_INSERT_CATALOG_BASE)+strlen(navn)+1, SQL_INSERT_CATALOG_FORMAT, navn);
-	free(buf);
+//	free(buf);
 }
 char* getCatalogId(char* navn) {
 	sql_queryf(strlen(SQL_SELECT_CATALOG_ID_BASE)+strlen(navn)+1, SQL_SELECT_CATALOG_ID_FORMAT, navn);

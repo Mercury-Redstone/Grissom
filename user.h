@@ -12,7 +12,7 @@
 
 void add_user(char* navn, char* epost, char* tlf, char* adresse, char* byen, char* postkode, char gender) {
 	sql_queryf(strlen(SQL_INSERT_USER_BASE)+strlen(navn)+strlen(epost)+strlen(tlf)+strlen(adresse)+strlen(byen)+strlen(postkode)+1+1, SQL_INSERT_USER_FORMAT, navn, epost, tlf, adresse, byen, postkode, gender);
-	free(buf);
+	//free(buf);
 }
 char* getUid(char* navn) {
 	sql_queryf(strlen(SQL_SELECT_USER_ID_BASE)+strlen(navn)+1, SQL_SELECT_USER_ID_FORMAT, navn);
