@@ -5,7 +5,7 @@
 #include <string.h> 
 
 int main(void) {
-	char *inp[5];
+	char *inp[6];
 	char temp[100];
 	static const char *Nameholder[] = {"Navn på fil:", "Navn til bruker:", "Navn til gruppe:", "Navn til katalog:", "Navn til eier:", "Skal filen overvåkes 1 for ja:"};
 
