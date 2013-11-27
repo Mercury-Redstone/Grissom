@@ -9,9 +9,11 @@
 
 void add_revision(char* fil, char* hash, char* dato, int generasjon) {
 //	if(mysql==NULL) sql_init();
-	char* buf=malloc(strlen(SQL_INSERT_REVISION_BASE)+strlen(fil)+strlen(hash)+strlen(dato)+8+1);
+/*	char* buf=malloc(strlen(SQL_INSERT_REVISION_BASE)+strlen(fil)+strlen(hash)+strlen(dato)+8+1);
 	sprintf(buf, SQL_INSERT_REVISION_FORMAT, fil,hash,dato,generasjon);
-	sql_query(buf);
+	sql_query(buf);*/
+
+	sql_queryf(strlen(SQL_INSERT_REVISION_BASE)+strlen(fil)+strlen(hash)+strlen(dato)+8+1, SQL_INSERT_REVISION_FORMAT, fil,hash,dato,generasjon);
 	free(buf);
 }
 

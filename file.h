@@ -14,10 +14,11 @@
 #define SQL_SELECT_FILE_ID_CHECKABLE   "SELECT fil_id FROM Fil WHERE skal_overvake='1'"
 void add_file(char* navn, char* bruker, char* gruppe, char* katalog, char* eier, int skal_overvake) {
 //	if(mysql==NULL) sql_init();
-	char* buf=malloc(strlen(SQL_INSERT_FILE_BASE)+strlen(navn)+4*5*sizeof(int));
+/*	char* buf=malloc(strlen(SQL_INSERT_FILE_BASE)+strlen(navn)+4*5*sizeof(int));
 	sprintf(buf, SQL_INSERT_FILE_FORMAT, navn, bruker, gruppe, katalog, eier, skal_overvake);
 	sql_query(buf);
-	free(buf);
+	free(buf);*/
+	sql_queryf(strlen(SQL_INSERT_FILE_BASE)+strlen(navn)+4*5*sizeof(int), SQL_INSERT_FILE_FORMAT, navn, bruker, gruppe, katalog, eier, skal_overvake);
 }
 
 char* getFileId(char* navn) {
@@ -30,9 +31,12 @@ char* getFileId(char* navn) {
 //	printf("%s : %s\n", katalog, filNavn);
 
 	char* katalogId=getCatalogId(katalog);
-	char* buf=malloc(strlen(SQL_SELECT_FILE_ID_BASE)+strlen(filNavn)+strlen(katalogId));
+	/*char* buf=malloc(strlen(SQL_SELECT_FILE_ID_BASE)+strlen(filNavn)+strlen(katalogId));
 	sprintf(buf, SQL_SELECT_FILE_ID_FORMAT, filNavn, katalogId);
-	SQL_RES* res=sql_query(buf);
+	SQL_RES* res=sql_query(buf);*/
+
+
+	sql_queryf(strlen(SQL_SELECT_FILE_ID_BASE)+strlen(filNavn)+strlen(katalogId), SQL_SELECT_FILE_ID_FORMAT, filNavn, katalogId);
 	char* ret;
 	int rows=sql_num_rows(res);
 	if(rows==1) {ret=sql_fetch_row(res)[0];sql_free_result(res);}

@@ -9,6 +9,14 @@
 #define SQL_RES MYSQL_RES
 #define SQL_ROW MYSQL_ROW
 
+#define sql_queryf(bufferLength,...) \
+	char* buf;\
+	buf=malloc((bufferLength)); \
+	sprintf(buf,__VA_ARGS__); \
+	SQL_RES* res=sql_query(buf); \
+	free(buf);\
+	res;
+
 #include <mysql/mysql.h> // Ref: http://dev.mysql.com/doc/refman/5.0/en/c-api.html
 #include <mysql/my_global.h>
 #include <mysql/my_sys.h>
@@ -43,6 +51,7 @@ SQL_RES* sql_query(const char* query) {
         sql_failOnError();
 	return result;
 }
+
 SQL_ROW sql_fetch_row(SQL_RES* result) {
 	return mysql_fetch_row(result);
 }
