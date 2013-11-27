@@ -13,19 +13,10 @@
 #define SQL_SELECT_CATALOG_NAME_BASE      "SELECT navn FROM Katalog WHERE katalog_id=''"
 #define SQL_SELECT_CATALOG_NAME_FORMAT    "SELECT navn FROM Katalog WHERE katalog_id='%s'"
 void add_catalog(char* navn) {
-//	if(mysql==NULL) sql_init();
-/*	char* buf=malloc(strlen(SQL_INSERT_CATALOG_BASE)+strlen(navn)+1);
-	sprintf(buf, SQL_INSERT_CATALOG_FORMAT, navn);
-	sql_query(buf);*/
 	sql_queryf(strlen(SQL_INSERT_CATALOG_BASE)+strlen(navn)+1, SQL_INSERT_CATALOG_FORMAT, navn);
 	free(buf);
 }
 char* getCatalogId(char* navn) {
-/*	char* buf=malloc(strlen(SQL_SELECT_CATALOG_ID_BASE)+strlen(navn)+1);
-        sprintf(buf, SQL_SELECT_CATALOG_ID_FORMAT, navn);
-        SQL_RES* res=sql_query(buf);
-	SQL_ROW row=sql_fetch_row(res);*/
-
 	sql_queryf(strlen(SQL_SELECT_CATALOG_ID_BASE)+strlen(navn)+1, SQL_SELECT_CATALOG_ID_FORMAT, navn);
 	SQL_ROW row=sql_fetch_row(res);
 
@@ -34,10 +25,6 @@ char* getCatalogId(char* navn) {
 	return strdup(buf2);
 }
 char* getCatalogName(char* id) {
-	/*char* buf=malloc(strlen(SQL_SELECT_CATALOG_NAME_BASE)+strlen(id)+1);
-        sprintf(buf, SQL_SELECT_CATALOG_NAME_FORMAT, id);
-        SQL_RES* res=sql_query(buf);*/
-
 	sql_queryf(strlen(SQL_SELECT_CATALOG_NAME_BASE)+strlen(id)+1,  SQL_SELECT_CATALOG_NAME_FORMAT, id);
         SQL_ROW row=sql_fetch_row(res);
         char* buf2=row[0];

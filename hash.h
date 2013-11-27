@@ -12,7 +12,6 @@ char* hash(char* fileName) {
 	char* ret=malloc(128);
 	fscanf(file, "%128s", ret);
 	pclose(file);
-//	printf(ret);
 	return ret;
 }
 
